@@ -127,7 +127,7 @@ function App() {
             onClick={handleExplore}
           >
             {' '}
-            <span role='img'> 🔭</span>{' '}
+            <span role='img'> {showContent ? '🔭' : '🌕'}</span>{' '}
           </button>
         </Row>
       </Container>

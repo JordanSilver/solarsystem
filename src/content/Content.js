@@ -99,7 +99,7 @@ const Content = ({ camera, showContent }) => {
             <Accordion>
               <Accordion.Item eventKey='0'>
                 <Accordion.Header>
-                  <h4 className='pt-2'>👨‍🚀 About Me </h4>
+                  <h4 className='pt-2'>👨‍💻 About Me </h4>
                 </Accordion.Header>
                 <Accordion.Body>
                   <p style={{ color: 'black' }}>
