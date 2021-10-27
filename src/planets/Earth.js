@@ -60,7 +60,7 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
 
     earth.rotation.y += 0.005;
     // earth.rotation.z -= 0.0001;
-    earthOrbit();
+    // earthOrbit();
 
     renderer.render(scene, camera);
   };

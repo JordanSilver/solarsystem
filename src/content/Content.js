@@ -35,7 +35,7 @@ const Content = ({ camera }) => {
   document.body.onscroll = moveCamera;
   return (
     <div className='content'>
-      <div style={{ height: '50vh', width: '100%' }}></div>
+      <div style={{ height: '60vh', width: '100%' }}></div>
       <div style={{ height: '50vh', width: '100%' }}>
         <Row style={{ maxWidth: '30rem' }}>
           <Col className='ml-3' xs={6} md={2}>
