@@ -14,7 +14,7 @@ import {
 import Portfolio from './Portfolio';
 import { Accordion, Col, Row } from 'react-bootstrap';
 
-const Content = ({ camera }) => {
+const Content = ({ camera, showContent }) => {
   // ROTATION
   var r = 50;
 
@@ -34,7 +34,23 @@ const Content = ({ camera }) => {
   }
   document.body.onscroll = moveCamera;
   return (
-    <div className='content'>
+    <div
+      className='content'
+      style={{ visibility: showContent ? 'visible' : 'hidden' }}
+    >
+      <i>
+        {' '}
+        <p className='text-center text-secondary'>
+          {' '}
+          - <small> scroll down </small>-
+        </p>
+      </i>
+      <h4
+        className='ml-2 mt-5'
+        style={{ height: '10vh', width: '100%', color: 'white' }}
+      >
+        "Hello, <br /> World!"
+      </h4>
       <div style={{ height: '60vh', width: '100%' }}></div>
       <div style={{ height: '50vh', width: '100%' }}>
         <Row style={{ maxWidth: '30rem' }}>
@@ -53,9 +69,12 @@ const Content = ({ camera }) => {
       </div>
 
       <Row style={{ maxWidth: '50rem' }} className='mx-auto'>
-        <Col xs={10} md={6} className='blockquote mx-auto'>
+        <Col xs={6} md={6} className='blockquote'>
           {' '}
-          <h3>Welcome to Silver Stack</h3>
+          <h3>
+            Welcome to <br />
+            Silver Stack
+          </h3>
         </Col>
         <Col className='card mx-auto' xs={10} md={8}>
           <h2 className='pt-2' style={{ color: 'black' }}>
@@ -199,7 +218,7 @@ const Content = ({ camera }) => {
       <div style={{ height: '15vh', width: '100%' }}></div>
       <Col xs={10} md={6}>
         <p className='blockquote'>
-          The best way out is always through. <br />
+          "The best way out is always through." <br />
           -Robert Frost 🖊️
         </p>
       </Col>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as THREE from 'three';
 
 import * as Stats from 'stats-js';
@@ -11,11 +11,12 @@ import Moon from './planets/Moon';
 import Sun from './planets/Sun';
 import NebulaCloud from './background/NebulaCloud';
 import Content from './content/Content';
-import { Container } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 let scene, camera, renderer, controls;
 
 function App() {
+  const [showContent, setShowContent] = useState(true);
   const init = () => {
     // Scene
     scene = new THREE.Scene();
@@ -95,6 +96,13 @@ function App() {
   };
   window.addEventListener('resize', onWindowResize, false);
 
+  const handleExplore = () => {
+    if (!showContent) {
+      setShowContent(true);
+    } else {
+      setShowContent(false);
+    }
+  };
   // function call
   init();
   animate();
@@ -112,14 +120,18 @@ function App() {
         <Sun scene={scene} THREE={THREE} renderer={renderer} camera={camera} />
       </div>
       <Container>
-        <h4
-          className='ml-2 mt-5'
-          style={{ height: '10vh', width: '100%', color: 'white' }}
-        >
-          "Hello, <br /> World!"
-        </h4>
+        <Row>
+          <button
+            style={{ zIndex: '999', position: 'fixed', right: '0' }}
+            className='btn btn-secondary btn-sm m-2'
+            onClick={handleExplore}
+          >
+            {' '}
+            <span role='img'> 🔭</span>{' '}
+          </button>
+        </Row>
       </Container>
-      <Content camera={camera} />
+      <Content camera={camera} showContent={showContent} />
     </>
   );
 }

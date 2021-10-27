@@ -22,7 +22,7 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
   });
 
   const earth = new THREE.Mesh(earthgeometry, earthmaterial);
-  earth.position.set(200, -300, 0);
+  earth.position.set(200, -275, 0);
   earth.castShadow = true;
   earth.receiveShadow = true;
 
@@ -37,7 +37,7 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
   });
 
   const atmosphere = new THREE.Mesh(atmosgeometry, atmosmaterial);
-  atmosphere.position.set(200, -300, 0);
+  atmosphere.position.set(200, -275, 0);
   scene.add(earth, atmosphere);
 
   var r = 300;
