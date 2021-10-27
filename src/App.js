@@ -1,185 +1,110 @@
+import React from 'react';
 import * as THREE from 'three';
 
+import * as Stats from 'stats-js';
+
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-let scene,
-  camera,
-  renderer,
-  controls,
-  moon,
-  sun,
-  earth,
-  atmosphere,
-  planetEarth;
+
+import Stars from './background/Stars';
+import Earth from './planets/Earth';
+import Moon from './planets/Moon';
+import Sun from './planets/Sun';
+import NebulaCloud from './background/NebulaCloud';
+import Content from './content/Content';
+
+let scene, camera, renderer, controls, gui, stats;
+
 function App() {
   const init = () => {
+    // Scene
     scene = new THREE.Scene();
+    // Camera
     camera = new THREE.PerspectiveCamera(
-      100,
+      // perspective angle [set to 60]
+      90,
       window.innerWidth / window.innerHeight,
       0.1,
       1000
     );
-
+    // Background Color
+    //scene.background = new THREE.Color(0xffffff);
+    scene.fog = new THREE.FogExp2(0x232323, 0.001);
+    // Renderer
     renderer = new THREE.WebGLRenderer({ antialias: true });
-
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
+    renderer.setClearColor(scene.fog.color);
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
-
-    scene.background = new THREE.Color(0x000000);
-
-    // LIGHT SOURCES
-    const hemiLight = new THREE.HemisphereLightProbe(0xffffff);
-
-    const sunLight = new THREE.DirectionalLight(0xf7fdce);
-    sunLight.position.set(-900, 200, 0);
-    sunLight.castShadow = true;
-    sunLight.shadow.mapSize.width = 512; // default
-    sunLight.shadow.mapSize.height = 512; // default
-    sunLight.shadow.camera.near = 0.5; // default
-    sunLight.shadow.camera.far = 500; // default
-
-    const ambientLight = new THREE.AmbientLight(0x000000);
-
-    scene.add(sunLight);
-
-    // HELPERS
-
-    const gridHelper = new THREE.GridHelper(200, 50);
-
     // CONTROLS
     controls = new OrbitControls(camera, renderer.domElement);
+    // LIGHT SOURCES
+    const hemiLight = new THREE.HemisphereLightProbe(0xffffff);
+    const ambientLight = new THREE.AmbientLight(0x000000);
 
-    //OBJECTS
+    // HELPERS
+    // const gridHelper = new THREE.GridHelper(500, 50);
 
-    //   MOOON
-
-    const geometry = new THREE.SphereBufferGeometry(4, 100, 100);
-
-    const bumpmap = new THREE.TextureLoader().load(
-      '/assets/textures/moonbump.jpg'
-    );
-    const displacemap = new THREE.TextureLoader().load(
-      '/assets/textures/moonbump.png'
-    );
-    const texture = new THREE.TextureLoader().load('/assets/textures/luna.jpg');
-    const material = new THREE.MeshStandardMaterial({
-      map: texture,
-      bumpMap: bumpmap,
-      bumpScale: 0.7,
-      displacementMap: displacemap,
-      displacementScale: 0.1,
-      roughness: 0.05,
-      emissive: 0xe8dddd,
-      emissiveIntensity: 0.1,
-    });
-
-    moon = new THREE.Mesh(geometry, material);
-    moon.receiveShadow = true;
-    moon.castShadow = true;
-
-    // EARTH
-
-    const earthgeometry = new THREE.SphereBufferGeometry(250, 200, 200);
-    const earthtexture = new THREE.TextureLoader().load(
-      '/assets/textures/worldmap.jpg'
-    );
-    const earthmaterial = new THREE.MeshStandardMaterial({
-      map: earthtexture,
-    });
-
-    earth = new THREE.Mesh(earthgeometry, earthmaterial);
-    earth.position.set(200, -200, 0);
-    earth.castShadow = true;
-    earth.receiveShadow = true;
-
-    const atmosgeometry = new THREE.SphereBufferGeometry(255, 200, 200);
-
-    const atmosmaterial = new THREE.MeshStandardMaterial({
-      color: 'blue',
-      opacity: 0.1,
-      transparent: true,
-      emissive: 0x4463dd,
-      emissiveIntensity: 1,
-    });
-
-    atmosphere = new THREE.Mesh(atmosgeometry, atmosmaterial);
-    atmosphere.position.set(200, -200, 0);
-    // SUN
-    const sungeometry = new THREE.SphereBufferGeometry(30, 200, 200);
-    const sunmaterial = new THREE.MeshStandardMaterial({
-      color: 'yellow',
-      emissive: 'yellow',
-      emissiveIntensity: 2,
-    });
-
-    sun = new THREE.Mesh(sungeometry, sunmaterial);
-    sun.position.set(-900, -100, 0);
-
-    scene.add(moon, sun, earth, atmosphere);
-
-    // STARS
-
-    function addStar() {
-      const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-      const material = new THREE.MeshStandardMaterial({
-        color: 0xffffff,
-        emissive: 0xffffff,
-        emissiveIntensity: 10,
-      });
-      const star = new THREE.Mesh(geometry, material);
-      const [x, y, z] = Array(3)
-        .fill()
-        .map(() => THREE.MathUtils.randFloatSpread(2000, 1000));
-
-      star.position.set(x, y, z);
-      scene.add(star);
-    }
-    Array(4000).fill().forEach(addStar);
-
+    // FPS
+    // stats = new Stats();
+    // stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
+    // document.body.appendChild(stats.dom);
     // CAMERA POSITION
-    camera.position.z = 0;
-    camera.position.y = 5;
+    camera.position.z = 10;
+    camera.position.y = 40;
     camera.position.x = -10;
-    // TEST CAMERA POSITION
-    // camera.position.z = 20;
-    // camera.position.y = -30;
-    // camera.position.x = -250;
-  };
-  var r = 350;
-  var theta = 20;
-  var dTheta = (2 * Math.PI) / 2500;
-
-  const earthOrbit = () => {
-    theta += dTheta;
-    earth.position.y = r * Math.cos(theta);
-    earth.position.z = r * Math.sin(theta);
-    atmosphere.position.y = r * Math.cos(theta);
-    atmosphere.position.z = r * Math.sin(theta);
   };
 
+  // ANIMATION LOOP
   var animate = function () {
-    requestAnimationFrame(animate);
-    moon.rotation.x -= 0.0001;
-    moon.rotation.y -= 0.001;
-
-    earth.rotation.x += 0.00005;
-    earth.rotation.y -= 0.001;
-
     controls.update();
-    earthOrbit();
+
+    requestAnimationFrame(animate);
+
     renderer.render(scene, camera);
   };
 
+  // Window resize update
   const onWindowResize = () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   };
-
   window.addEventListener('resize', onWindowResize, false);
+
+  // function call
   init();
   animate();
-  return <div></div>;
+  return (
+    <>
+      <div>
+        <Stars scene={scene} />;
+        <Moon scene={scene} THREE={THREE} renderer={renderer} camera={camera} />
+        <Earth
+          scene={scene}
+          THREE={THREE}
+          renderer={renderer}
+          camera={camera}
+        />
+        <Sun scene={scene} THREE={THREE} renderer={renderer} camera={camera} />
+        {/* <NebulaCloud
+        stats={stats}
+        scene={scene}
+        THREE={THREE}
+        renderer={renderer}
+        camera={camera}
+      /> */}
+      </div>
+      <h4
+        className='ml-2'
+        style={{ height: '10vh', width: '100%', color: 'white' }}
+      >
+        "Hello, <br /> World!"
+      </h4>
+
+      <Content camera={camera} />
+    </>
+  );
 }
 
 export default App;
