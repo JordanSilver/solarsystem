@@ -55,7 +55,7 @@ const Content = ({ camera }) => {
       <Row style={{ maxWidth: '50rem' }} className='mx-auto'>
         <Col xs={10} md={6} className='blockquote mx-auto'>
           {' '}
-          <h3>Web Development by Silver Stack</h3>
+          <h3>Welcome to Silver Stack</h3>
         </Col>
         <Col className='card mx-auto' xs={10} md={8}>
           <h2 className='pt-2' style={{ color: 'black' }}>
