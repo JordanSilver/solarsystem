@@ -122,14 +122,14 @@ function App() {
       </div>
       <Container>
         <Row>
-          <button
+          <div
             style={{ zIndex: '999', position: 'fixed', right: '0' }}
             className='btn btn-secondary btn-sm m-2'
             onClick={handleExplore}
           >
             {' '}
             <span role='img'> {showContent ? '🔭' : '🌕'}</span>{' '}
-          </button>
+          </div>
         </Row>
       </Container>
       <Content camera={camera} showContent={showContent} />
