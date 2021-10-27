@@ -30,7 +30,7 @@ function App() {
     //scene.background = new THREE.Color(0xffffff);
     scene.fog = new THREE.FogExp2(0x000000, 0.001);
     // Renderer
-    renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
     renderer.setClearColor(scene.fog.color);

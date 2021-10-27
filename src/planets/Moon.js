@@ -27,12 +27,14 @@ const Moon = ({ scene, THREE, renderer, camera }) => {
   const moon = new THREE.Mesh(geometry, material);
   moon.receiveShadow = true;
   moon.castShadow = true;
-  moon.rotation.z = -0.5;
+  moon.rotation.z = 0.0055;
+  moon.rotation.y = -Math.PI * 2;
+  moon.rotation.x = Math.PI / 2;
   scene.add(moon);
 
   var animate = function () {
     requestAnimationFrame(animate);
-    moon.rotation.z -= 0.0001;
+    moon.rotation.z += 0.00001;
     moon.rotation.y -= 0.004;
 
     renderer.render(scene, camera);

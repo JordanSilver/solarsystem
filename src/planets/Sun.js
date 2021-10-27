@@ -36,9 +36,9 @@ const Sun = ({ scene, THREE, renderer, camera }) => {
   const sunOrbit = () => {
     theta += dTheta;
     sun.position.z = r * Math.sin(theta);
-    sun.position.y = r * Math.cos(theta);
+    sun.position.x = r * Math.cos(theta);
     sunLight.position.z = r * Math.sin(theta);
-    sunLight.position.y = r * Math.cos(theta);
+    sunLight.position.x = r * Math.cos(theta);
   };
   // ANIMATION
   var animate = function () {
