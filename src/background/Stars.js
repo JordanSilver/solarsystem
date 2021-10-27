@@ -4,7 +4,7 @@ const Stars = ({ scene }) => {
   // STARS
 
   function addStar() {
-    const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+    const geometry = new THREE.SphereBufferGeometry(0.25, 24, 24);
     const material = new THREE.MeshStandardMaterial({
       color: 0xffffff,
       emissive: 0xffffff,
