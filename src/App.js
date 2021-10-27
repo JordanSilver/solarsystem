@@ -28,7 +28,7 @@ function App() {
     );
     // Background Color
     //scene.background = new THREE.Color(0xffffff);
-    scene.fog = new THREE.FogExp2(0x232323, 0.001);
+    scene.fog = new THREE.FogExp2(0x000000, 0.001);
     // Renderer
     renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.shadowMap.enabled = true;
@@ -78,7 +78,7 @@ function App() {
   return (
     <>
       <div>
-        <Stars scene={scene} />;
+        {/* <Stars scene={scene} />; */}
         <Moon scene={scene} THREE={THREE} renderer={renderer} camera={camera} />
         <Earth
           scene={scene}
