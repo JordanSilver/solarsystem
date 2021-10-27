@@ -26,7 +26,7 @@ const Content = ({ camera }) => {
     const t = document.body.getBoundingClientRect().top;
     theta += dTheta;
     camera.position.z = t + r * Math.sin(theta) + 60;
-    camera.position.y = (t / r) * Math.cos(theta) + 40;
+    camera.position.y = (t / r) * Math.cos(theta) + 20;
     camera.position.x = (t / r) * Math.cos(theta) - 20;
     // camera.position.z = t * -0.01;
     // camera.position.x = t * Math.cos(2 * Math.PI) * 0.001 - 30;

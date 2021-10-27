@@ -11,6 +11,7 @@ import Moon from './planets/Moon';
 import Sun from './planets/Sun';
 import NebulaCloud from './background/NebulaCloud';
 import Content from './content/Content';
+import { Container } from 'react-bootstrap';
 
 let scene, camera, renderer, controls;
 
@@ -52,7 +53,7 @@ function App() {
     // document.body.appendChild(stats.dom);
     // CAMERA POSITION
     camera.position.z = 10;
-    camera.position.y = 40;
+    camera.position.y = 20;
     camera.position.x = -10;
     let skyBoxArray = [];
     let text_ft = new THREE.TextureLoader().load('/assets/skybox/3.jpg');
@@ -110,13 +111,14 @@ function App() {
         />
         <Sun scene={scene} THREE={THREE} renderer={renderer} camera={camera} />
       </div>
-      <h4
-        className='ml-2 mt-5'
-        style={{ height: '10vh', width: '100%', color: 'white' }}
-      >
-        "Hello, <br /> World!"
-      </h4>
-
+      <Container>
+        <h4
+          className='ml-2 mt-5'
+          style={{ height: '10vh', width: '100%', color: 'white' }}
+        >
+          "Hello, <br /> World!"
+        </h4>
+      </Container>
       <Content camera={camera} />
     </>
   );
