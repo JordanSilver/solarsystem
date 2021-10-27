@@ -12,7 +12,7 @@ import Sun from './planets/Sun';
 import NebulaCloud from './background/NebulaCloud';
 import Content from './content/Content';
 
-let scene, camera, renderer, controls, gui, stats;
+let scene, camera, renderer, controls;
 
 function App() {
   const init = () => {
@@ -21,7 +21,7 @@ function App() {
     // Camera
     camera = new THREE.PerspectiveCamera(
       // perspective angle [set to 60]
-      90,
+      100,
       window.innerWidth / window.innerHeight,
       0.1,
       1000
@@ -38,6 +38,7 @@ function App() {
     document.body.appendChild(renderer.domElement);
     // CONTROLS
     controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
     // LIGHT SOURCES
     const hemiLight = new THREE.HemisphereLightProbe(0xffffff);
     const ambientLight = new THREE.AmbientLight(0x000000);
@@ -53,6 +54,27 @@ function App() {
     camera.position.z = 10;
     camera.position.y = 40;
     camera.position.x = -10;
+    let skyBoxArray = [];
+    let text_ft = new THREE.TextureLoader().load('/assets/skybox/1.jpg');
+    let text_bk = new THREE.TextureLoader().load('/assets/skybox/2.jpg');
+    let text_up = new THREE.TextureLoader().load('/assets/skybox/3.jpg');
+    let text_dn = new THREE.TextureLoader().load('/assets/skybox/4.jpg');
+    let text_rt = new THREE.TextureLoader().load('/assets/skybox/5.jpg');
+    let text_lt = new THREE.TextureLoader().load('/assets/skybox/6.jpg');
+
+    skyBoxArray.push(new THREE.MeshBasicMaterial({ map: text_ft }));
+    skyBoxArray.push(new THREE.MeshBasicMaterial({ map: text_bk }));
+    skyBoxArray.push(new THREE.MeshBasicMaterial({ map: text_up }));
+    skyBoxArray.push(new THREE.MeshBasicMaterial({ map: text_dn }));
+    skyBoxArray.push(new THREE.MeshBasicMaterial({ map: text_rt }));
+    skyBoxArray.push(new THREE.MeshBasicMaterial({ map: text_lt }));
+
+    for (let i = 0; i < 6; i++) {
+      skyBoxArray[i].side = THREE.BackSide;
+    }
+    let skyBoxGeometry = new THREE.BoxGeometry(1000, 1000, 1000);
+    let skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxArray);
+    scene.add(skyBox);
   };
 
   // ANIMATION LOOP
@@ -87,16 +109,9 @@ function App() {
           camera={camera}
         />
         <Sun scene={scene} THREE={THREE} renderer={renderer} camera={camera} />
-        {/* <NebulaCloud
-        stats={stats}
-        scene={scene}
-        THREE={THREE}
-        renderer={renderer}
-        camera={camera}
-      /> */}
       </div>
       <h4
-        className='ml-2'
+        className='ml-2 mt-5'
         style={{ height: '10vh', width: '100%', color: 'white' }}
       >
         "Hello, <br /> World!"

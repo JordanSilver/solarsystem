@@ -38,7 +38,7 @@ const Content = ({ camera }) => {
       <div style={{ height: '50vh', width: '100%' }}></div>
       <div style={{ height: '50vh', width: '100%' }}>
         <Row style={{ maxWidth: '30rem' }}>
-          <Col xs={6} md={2}>
+          <Col className='ml-3' xs={6} md={2}>
             <h2>
               Jordan <br /> Silver
             </h2>

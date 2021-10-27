@@ -48,19 +48,19 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
 
   const earthOrbit = () => {
     theta += dTheta;
-    earth.position.y = r * Math.cos(theta);
+    earth.position.x = r * Math.cos(theta);
     // earth.position.y = r * Math.sin(theta / 2);
     earth.position.z = r * Math.sin(theta);
-    atmosphere.position.y = r * Math.cos(theta);
+    // atmosphere.position.y = r * Math.cos(theta);
     atmosphere.position.z = r * Math.sin(theta);
-    // atmosphere.position.x = r * Math.cos(theta);
+    atmosphere.position.x = r * Math.cos(theta);
   };
   var animate = function () {
     requestAnimationFrame(animate);
 
     earth.rotation.y += 0.005;
     // earth.rotation.z -= 0.0001;
-    // earthOrbit();
+    earthOrbit();
 
     renderer.render(scene, camera);
   };
