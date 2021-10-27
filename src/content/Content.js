@@ -34,10 +34,7 @@ const Content = ({ camera, showContent }) => {
   }
   document.body.onscroll = moveCamera;
   return (
-    <div
-      className='content'
-      style={{ visibility: showContent ? 'visible' : 'hidden' }}
-    >
+    <div className='content' style={{ zIndex: showContent ? '99' : '-99' }}>
       <i>
         {' '}
         <p className='text-center text-secondary'>
