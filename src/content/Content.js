@@ -51,7 +51,7 @@ const Content = ({ camera, showContent }) => {
       <div style={{ height: '60vh', width: '100%' }}></div>
       <div style={{ height: '50vh', width: '100%' }}>
         <Row style={{ maxWidth: '30rem' }}>
-          <Col className='ml-3' xs={6} md={2}>
+          <Col className='ml-3' xs={6} md={6}>
             <h2>
               Jordan <br /> Silver
             </h2>
@@ -66,9 +66,9 @@ const Content = ({ camera, showContent }) => {
       </div>
 
       <Row style={{ maxWidth: '50rem' }} className='mx-auto'>
-        <Col xs={6} md={6} className='blockquote'>
+        <Col xs={6} md={6} className='blockquote mx-auto'>
           {' '}
-          <h3>
+          <h3 className='text-center'>
             Welcome to <br />
             Silver Stack
           </h3>
@@ -170,10 +170,15 @@ const Content = ({ camera, showContent }) => {
                     </small>
                   </Row>
                   <br />
-                  <form name='contact' method='POST' data-netlify='true'>
+                  <form
+                    className='mx-auto'
+                    name='contact'
+                    method='POST'
+                    data-netlify='true'
+                  >
                     <Row className='mx-auto mx-2'>
                       <input
-                        className='px-4'
+                        className='px-4 mx-auto'
                         type='text'
                         placeholder='Your Name'
                         name='name'
@@ -185,7 +190,7 @@ const Content = ({ camera, showContent }) => {
                         placeholder='Your Email'
                         type='email'
                         name='email'
-                        className='px-4'
+                        className='px-4 mx-auto'
                       />
                     </Row>
                     <hr />
