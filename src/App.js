@@ -96,8 +96,7 @@ function App() {
   };
   window.addEventListener('resize', onWindowResize, false);
 
-  const handleExplore = (e) => {
-    e.preventDefault();
+  const handleExplore = () => {
     if (!showContent) {
       setShowContent(true);
     } else {
