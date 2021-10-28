@@ -149,6 +149,7 @@ const Content = ({ camera, showContent }) => {
                         href='https://github.com/JordanSilver'
                         style={{ color: ' #4078c0' }}
                         target='_blank'
+                        rel='noreferrer' // noopener
                       >
                         <SiGithub size={40} />
                       </a>
