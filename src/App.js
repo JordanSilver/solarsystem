@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import * as THREE from 'three';
 
-import * as Stats from 'stats-js';
-
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
-import Stars from './background/Stars';
 import Earth from './planets/Earth';
 import Moon from './planets/Moon';
 import Sun from './planets/Sun';
@@ -43,7 +40,7 @@ function App() {
     controls.enableDamping = true;
     // LIGHT SOURCES
     const hemiLight = new THREE.HemisphereLightProbe(0xffffff);
-    const ambientLight = new THREE.AmbientLight(0x000000);
+    const ambientLight = new THREE.AmbientLight(0xffffff);
 
     // HELPERS
     // const gridHelper = new THREE.GridHelper(500, 50);
@@ -111,7 +108,6 @@ function App() {
   return (
     <>
       <div>
-        {/* <Stars scene={scene} />; */}
         <Moon scene={scene} THREE={THREE} renderer={renderer} camera={camera} />
         <Earth
           scene={scene}

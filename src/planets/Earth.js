@@ -17,8 +17,6 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
     map: earthtexture,
     bumpMap: bumpmap,
     bumpScale: 1,
-    displacementMap: displacemap,
-    displacementScale: 1,
   });
 
   const earth = new THREE.Mesh(earthgeometry, earthmaterial);

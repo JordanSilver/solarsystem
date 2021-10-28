@@ -8,17 +8,14 @@ const Moon = ({ scene, THREE, renderer, camera }) => {
   const bumpmap = new THREE.TextureLoader().load(
     '/assets/textures/moonbump.jpg'
   );
-  const displacemap = new THREE.TextureLoader().load(
-    '/assets/textures/moonbump.png'
-  );
+
   const texture = new THREE.TextureLoader().load('/assets/textures/luna.jpg');
 
   const material = new THREE.MeshStandardMaterial({
     map: texture,
+
     bumpMap: bumpmap,
-    bumpScale: 0.7,
-    displacementMap: displacemap,
-    displacementScale: 0.1,
+    displacementScale: 0.5,
     roughness: 0.05,
   });
   material.receiveShadow = true;
@@ -30,7 +27,7 @@ const Moon = ({ scene, THREE, renderer, camera }) => {
   moon.rotation.z = 0.0055;
   moon.rotation.y = -Math.PI * 2;
   moon.rotation.x = Math.PI * 2;
-  moon.material.map.dispose();
+
   scene.add(moon);
 
   var animate = function () {
