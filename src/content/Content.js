@@ -33,9 +33,9 @@ const Content = ({ camera, showContent }) => {
     // camera.position.y = t * Math.sin((2 * Math.PI) / -100.01) + 20;
   }
   document.body.onscroll = moveCamera;
-  // style={{ zIndex: !showContent ? '-99' : '99' }}
+
   return (
-    <div className='content'>
+    <div className='content' style={{ zIndex: !showContent ? '-99' : '99' }}>
       <i>
         {' '}
         <p className='text-center text-secondary'>
