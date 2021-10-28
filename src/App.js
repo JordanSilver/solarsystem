@@ -59,8 +59,8 @@ function App() {
     let skyBoxArray = [];
     let text_ft = new THREE.TextureLoader().load('/assets/skybox/3.jpg');
     let text_bk = new THREE.TextureLoader().load('/assets/skybox/6.jpg');
-    let text_up = new THREE.TextureLoader().load('/assets/skybox/2.jpg');
-    let text_dn = new THREE.TextureLoader().load('/assets/skybox/5.jpg');
+    let text_up = new THREE.TextureLoader().load('/assets/skybox/5.jpg');
+    let text_dn = new THREE.TextureLoader().load('/assets/skybox/2.jpg');
     let text_rt = new THREE.TextureLoader().load('/assets/skybox/4.jpg');
     let text_lt = new THREE.TextureLoader().load('/assets/skybox/1.jpg');
 
