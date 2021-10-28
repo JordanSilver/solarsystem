@@ -30,6 +30,7 @@ const Moon = ({ scene, THREE, renderer, camera }) => {
   moon.rotation.z = 0.0055;
   moon.rotation.y = -Math.PI * 2;
   moon.rotation.x = Math.PI * 2;
+  moon.material.map.dispose();
   scene.add(moon);
 
   var animate = function () {
