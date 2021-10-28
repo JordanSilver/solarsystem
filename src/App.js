@@ -74,6 +74,21 @@ function App() {
     let skyBoxGeometry = new THREE.BoxGeometry(1000, 1000, 1000);
     let skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxArray);
     scene.add(skyBox);
+
+    var frustum = new THREE.Frustum();
+    var cameraViewProjectionMatrix = new THREE.Matrix4();
+
+    // every time the camera or objects change position (or every frame)
+
+    camera.updateMatrixWorld(); // make sure the camera matrix is updated
+    camera.matrixWorldInverse.getInverse(camera.matrixWorld);
+    cameraViewProjectionMatrix.multiplyMatrices(
+      camera.projectionMatrix,
+      camera.matrixWorldInverse
+    );
+    frustum.setFromMatrix(cameraViewProjectionMatrix);
+
+    // frustum is now ready to check all the objects you need
   };
 
   // ANIMATION LOOP
