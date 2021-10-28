@@ -39,6 +39,7 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
   const atmosphere = new THREE.Mesh(atmosgeometry, atmosmaterial);
   atmosphere.position.set(200, -275, 0);
   scene.add(earth, atmosphere);
+  earth.material.map.dispose();
 
   var r = 300;
 
