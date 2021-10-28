@@ -43,8 +43,9 @@ const Sun = ({ scene, THREE, renderer, camera }) => {
   // ANIMATION
   var animate = function () {
     requestAnimationFrame(animate);
-
-    sunOrbit();
+    if (sun !== undefined) {
+      sunOrbit();
+    }
 
     renderer.render(scene, camera);
   };

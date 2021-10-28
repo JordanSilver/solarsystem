@@ -104,6 +104,7 @@ function App() {
       setShowContent(false);
     }
   };
+
   // function call
   init();
   animate();

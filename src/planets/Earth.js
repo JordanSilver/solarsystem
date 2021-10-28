@@ -58,8 +58,9 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
   };
   var animate = function () {
     requestAnimationFrame(animate);
-
-    earth.rotation.y += 0.005;
+    if (earth !== undefined) {
+      earth.rotation.y += 0.005;
+    }
     // earth.rotation.z -= 0.0001;
     // earthOrbit();
 

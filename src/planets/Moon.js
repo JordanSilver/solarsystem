@@ -35,8 +35,10 @@ const Moon = ({ scene, THREE, renderer, camera }) => {
 
   var animate = function () {
     requestAnimationFrame(animate);
-    moon.rotation.z += 0.00001;
-    moon.rotation.y -= 0.004;
+    if (moon !== undefined) {
+      moon.rotation.z += 0.00001;
+      moon.rotation.y -= 0.004;
+    }
 
     renderer.render(scene, camera);
   };
