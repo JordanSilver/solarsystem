@@ -10,13 +10,11 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
   const bumpmap = new THREE.TextureLoader().load(
     '/assets/textures/earthbump.jpg'
   );
-  const displacemap = new THREE.TextureLoader().load(
-    '/assets/textures/earthdisplace.png'
-  );
+
   const earthmaterial = new THREE.MeshStandardMaterial({
     map: earthtexture,
-    bumpMap: bumpmap,
-    bumpScale: 1,
+    // bumpMap: bumpmap,
+    // bumpScale: 1,
   });
 
   const earth = new THREE.Mesh(earthgeometry, earthmaterial);
