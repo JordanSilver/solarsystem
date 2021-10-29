@@ -17,6 +17,7 @@ const Portfolio = () => {
               className='btn btn-danger'
               href='https://nxt-crypto.netlify.app/'
               target='_blank'
+              rel='noopener noreferrer'
             >
               <small>Tap here for Website</small>
             </a>
@@ -35,6 +36,26 @@ const Portfolio = () => {
               className='btn btn-danger'
               href='https://beastmodebattles.herokuapp.com/'
               target='_blank'
+              rel='noopener noreferrer'
+            >
+              <small>Tap here for Website</small>
+            </a>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className='d-block w-100'
+            src='/assets/images/dispensary.png'
+            alt='Second slide'
+          />
+
+          <Carousel.Caption className='label'>
+            <h6>For Medical Use Only</h6>
+            <a
+              className='btn btn-danger'
+              href='https://dispensary.vercel.app/'
+              target='_blank'
+              rel='noopener noreferrer'
             >
               <small>Tap here for Website</small>
             </a>
