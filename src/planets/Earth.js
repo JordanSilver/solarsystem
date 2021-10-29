@@ -7,14 +7,9 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
   const earthtexture = new THREE.TextureLoader().load(
     '/assets/textures/worldmap.jpg'
   );
-  const bumpmap = new THREE.TextureLoader().load(
-    '/assets/textures/earthbump.jpg'
-  );
 
   const earthmaterial = new THREE.MeshStandardMaterial({
     map: earthtexture,
-    // bumpMap: bumpmap,
-    // bumpScale: 1,
   });
 
   const earth = new THREE.Mesh(earthgeometry, earthmaterial);
@@ -35,7 +30,6 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
   const atmosphere = new THREE.Mesh(atmosgeometry, atmosmaterial);
   atmosphere.position.set(200, -275, 0);
   scene.add(earth, atmosphere);
-  earth.material.map.dispose();
 
   var r = 300;
 

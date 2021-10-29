@@ -54,7 +54,7 @@ const Content = ({ camera, showContent }) => {
         <Row style={{ maxWidth: '30rem' }}>
           <Col className='ml-3' xs={6} md={6}>
             <h2>
-              Jordan <br /> Silver
+              Daniel <br /> Silver
             </h2>
             <div className='card text-center'>
               <span style={{ fontSize: '2rem' }}>🚀</span> <br />{' '}
@@ -101,7 +101,7 @@ const Content = ({ camera, showContent }) => {
                 </Accordion.Header>
                 <Accordion.Body>
                   <p style={{ color: 'black' }}>
-                    Name: Jordan Silver <br />
+                    Name: Daniel Silver <br />
                     Age: 30 <br />
                     Location: Toronto, CA <br />
                     Languages:
