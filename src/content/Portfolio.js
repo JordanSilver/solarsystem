@@ -61,6 +61,25 @@ const Portfolio = () => {
             </a>
           </Carousel.Caption>
         </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className='d-block w-100'
+            src='/assets/images/dispensary.png'
+            alt='Second slide'
+          />
+
+          <Carousel.Caption className='label'>
+            <h6>TAG PAINTING</h6>
+            <a
+              className='btn btn-danger'
+              href='https://tagpaintingv2.netlify.app/'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <small>Tap here for Website</small>
+            </a>
+          </Carousel.Caption>
+        </Carousel.Item>
       </Carousel>
     </>
   );
