@@ -175,16 +175,10 @@ const Content = ({ camera, showContent }) => {
                   <form
                     className='mx-auto'
                     name='silverstackform'
-                    value='contact'
                     method='post'
                     data-netlify='true'
-                    netlify-recaptcha='true'
                   >
-                    <input
-                      type='hidden'
-                      name='form-name'
-                      value='silverstackform'
-                    />
+                    <input type='hidden' name='form-name' value='silverstack' />
                     <Row className='mx-auto mx-2'>
                       <input
                         className='px-4 mx-auto'
