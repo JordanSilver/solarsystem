@@ -64,7 +64,7 @@ const Portfolio = () => {
         <Carousel.Item>
           <img
             className='d-block w-100'
-            src='/assets/images/dispensary.png'
+            src='/assets/images/tag.png'
             alt='Second slide'
           />
 
