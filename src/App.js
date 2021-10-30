@@ -34,21 +34,15 @@ function App() {
     renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
     renderer.setClearColor(scene.fog.color);
     renderer.setSize(window.innerWidth, window.innerHeight);
+
     document.body.appendChild(renderer.domElement);
     // CONTROLS
     controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    // LIGHT SOURCES
-    const hemiLight = new THREE.HemisphereLightProbe(0xffffff);
-    const ambientLight = new THREE.AmbientLight(0xffffff);
 
     // HELPERS
     // const gridHelper = new THREE.GridHelper(500, 50);
 
-    // FPS
-    // stats = new Stats();
-    // stats.showPanel(0); // 0: fps, 1: ms, 2: mb, 3+: custom
-    // document.body.appendChild(stats.dom);
     // CAMERA POSITION
     camera.position.z = 10;
     camera.position.y = 20;
