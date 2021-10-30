@@ -1,21 +1,23 @@
 import React from 'react';
 
-const Moon = ({ scene, THREE, renderer, camera }) => {
+const Moon = ({ scene, THREE, renderer, camera, loadingManager }) => {
   //   MOON
 
   const geometry = new THREE.SphereBufferGeometry(4, 100, 100);
 
-  const bumpmap = new THREE.TextureLoader().load(
+  const bumpmap = new THREE.TextureLoader(loadingManager).load(
     '/assets/textures/moonbump.jpg'
   );
 
-  const texture = new THREE.TextureLoader().load('/assets/textures/luna.jpg');
+  const texture = new THREE.TextureLoader(loadingManager).load(
+    '/assets/textures/luna.jpg'
+  );
 
   const material = new THREE.MeshStandardMaterial({
     map: texture,
 
     bumpMap: bumpmap,
-    displacementScale: 0.5,
+    displacementScale: 0.3,
     roughness: 0.05,
   });
   material.receiveShadow = true;

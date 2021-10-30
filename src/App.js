@@ -125,6 +125,7 @@ function App() {
             THREE={THREE}
             renderer={renderer}
             camera={camera}
+            loadingManager={loadingManager}
           />
           <Earth
             scene={scene}
