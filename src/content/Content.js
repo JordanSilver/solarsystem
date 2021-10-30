@@ -9,7 +9,6 @@ import {
   SiExpress,
   SiMongodb,
   SiGithub,
-  SiInstagram,
 } from 'react-icons/si';
 import Portfolio from './Portfolio';
 import { Accordion, Col, Row } from 'react-bootstrap';
@@ -57,7 +56,10 @@ const Content = ({ camera, showContent }) => {
               Daniel <br /> Silver
             </h2>
             <div className='card text-center'>
-              <span style={{ fontSize: '2rem' }}>🚀</span> <br />{' '}
+              <span style={{ fontSize: '2rem' }} role='img' aria-label='rocket'>
+                🚀
+              </span>{' '}
+              <br />{' '}
               <p className='sub-title sub-title-ani'>
                 Web Developer | Designer | Entrepreneur
               </p>
@@ -76,14 +78,24 @@ const Content = ({ camera, showContent }) => {
         </Col>
         <Col className='card mx-auto' xs={10} md={8}>
           <h2 className='pt-2' style={{ color: 'black' }}>
-            🏆 Featured
+            <span role='img' aria-label='trophy'>
+              {' '}
+              🏆
+            </span>{' '}
+            Featured
           </h2>
           <hr />
 
           <Accordion>
             <Accordion.Item eventKey='0'>
               <Accordion.Header>
-                <h4 className='pt-2'> 📜 Portfolio</h4>
+                <h4 className='pt-2'>
+                  {' '}
+                  <span role='img' aria-label='script'>
+                    📜
+                  </span>{' '}
+                  Portfolio
+                </h4>
               </Accordion.Header>
               <Accordion.Body>
                 <Portfolio />
@@ -97,7 +109,12 @@ const Content = ({ camera, showContent }) => {
             <Accordion>
               <Accordion.Item eventKey='0'>
                 <Accordion.Header>
-                  <h4 className='pt-2'>👨‍💻 About Me </h4>
+                  <h4 className='pt-2'>
+                    <span role='img' aria-label='tech-guy'>
+                      👨‍💻
+                    </span>{' '}
+                    About Me{' '}
+                  </h4>
                 </Accordion.Header>
                 <Accordion.Body>
                   <p style={{ color: 'black' }}>
@@ -139,7 +156,12 @@ const Content = ({ camera, showContent }) => {
               </Accordion.Item>
               <Accordion.Item eventKey='1'>
                 <Accordion.Header>
-                  <h4 className='pt-2'>💻 Contact Info</h4>
+                  <h4 className='pt-2'>
+                    <span role='img' aria-label='laptop'>
+                      💻
+                    </span>{' '}
+                    Contact Info
+                  </h4>
                 </Accordion.Header>
                 <Accordion.Body>
                   <br />
@@ -150,7 +172,7 @@ const Content = ({ camera, showContent }) => {
                         href='https://github.com/JordanSilver'
                         style={{ color: ' #4078c0' }}
                         target='_blank'
-                        rel='noreferrer' // noopener
+                        rel='noopener noreferrer'
                       >
                         <SiGithub size={40} />
                       </a>

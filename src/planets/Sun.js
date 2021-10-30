@@ -29,7 +29,7 @@ const Sun = ({ scene, THREE, renderer, camera }) => {
   // ROTATION
   var r = 500;
 
-  var theta = 700;
+  var theta = 900;
   // speed
   var dTheta = (2 * Math.PI) / 5000;
 

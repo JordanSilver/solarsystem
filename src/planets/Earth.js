@@ -18,13 +18,13 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
   earth.castShadow = true;
   earth.receiveShadow = true;
 
-  const atmosgeometry = new THREE.SphereBufferGeometry(253, 50, 50);
+  const atmosgeometry = new THREE.SphereBufferGeometry(252, 50, 50);
   const earthclouds = new THREE.TextureLoader().load(
     '/assets/textures/cloudtext.jpg'
   );
 
   const atmosmaterial = new THREE.MeshStandardMaterial({
-    opacity: 0.8,
+    opacity: 0.5,
     transparent: true,
 
     map: earthclouds,
@@ -39,7 +39,7 @@ const Earth = ({ scene, THREE, renderer, camera }) => {
   var animate = function () {
     requestAnimationFrame(animate);
     if (earth !== undefined) {
-      earth.rotation.y += 0.002;
+      earth.rotation.y += 0.0005;
       atmosphere.rotation.y += 0.001;
     }
 

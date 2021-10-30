@@ -9,11 +9,13 @@ import Sun from './planets/Sun';
 
 import Content from './content/Content';
 import { Container, Row } from 'react-bootstrap';
+import { BounceLoader } from 'react-spinners';
 
 let scene, camera, renderer, controls, skyBox;
 
 function App() {
   const [showContent, setShowContent] = useState(true);
+  const [loadingState, setLoadingState] = useState(false);
   const init = () => {
     // Scene
     scene = new THREE.Scene();
@@ -76,7 +78,7 @@ function App() {
     requestAnimationFrame(animate);
     controls.update();
     if (skyBox !== undefined) {
-      skyBox.rotation.y += 0.0001;
+      skyBox.rotation.y += 0.0002;
     }
     renderer.render(scene, camera);
   };
@@ -97,22 +99,55 @@ function App() {
       setShowContent(false);
     }
   };
+  THREE.DefaultLoadingManager.onProgress = function (
+    url,
+    itemsLoaded,
+    itemsTotal
+  ) {
+    console.log(
+      'Loading file: ' +
+        url +
+        '.\nLoaded ' +
+        itemsLoaded +
+        ' of ' +
+        itemsTotal +
+        ' files.'
+    );
+  };
+  THREE.DefaultLoadingManager.onLoad = function () {};
 
   // function call
   init();
   animate();
+
   return (
     <>
-      <div>
-        <Moon scene={scene} THREE={THREE} renderer={renderer} camera={camera} />
-        <Earth
-          scene={scene}
-          THREE={THREE}
-          renderer={renderer}
-          camera={camera}
-        />
-        <Sun scene={scene} THREE={THREE} renderer={renderer} camera={camera} />
-      </div>
+      {THREE.DefaultLoadingManager.onProgress && (
+        <BounceLoader loading={true} size={150} color={0xffffff} />
+      )}
+      {THREE.DefaultLoadingManager.onLoad && (
+        <div>
+          <Moon
+            scene={scene}
+            THREE={THREE}
+            renderer={renderer}
+            camera={camera}
+          />
+          <Earth
+            scene={scene}
+            THREE={THREE}
+            renderer={renderer}
+            camera={camera}
+          />
+          <Sun
+            scene={scene}
+            THREE={THREE}
+            renderer={renderer}
+            camera={camera}
+          />
+        </div>
+      )}
+
       <Container>
         <Row>
           {window.innerWidth > 768 && (
