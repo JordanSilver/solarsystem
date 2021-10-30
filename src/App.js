@@ -10,7 +10,7 @@ import Sun from './planets/Sun';
 import Content from './content/Content';
 import { Container, Row, Spinner } from 'react-bootstrap';
 
-let scene, camera, renderer, controls, skyBox;
+let scene, camera, renderer, controls, skyBox, loadingScreen;
 
 function App() {
   const [showContent, setShowContent] = useState(true);
@@ -46,7 +46,7 @@ function App() {
     // const gridHelper = new THREE.GridHelper(500, 50);
 
     // CAMERA POSITION
-    camera.position.z = 10;
+    camera.position.z = 50;
     camera.position.y = 20;
     camera.position.x = -10;
     let skyBoxArray = [];
@@ -105,7 +105,7 @@ function App() {
     element.remove();
   }
   const loadingManager = new THREE.LoadingManager(() => {
-    const loadingScreen = document.getElementById('loading-screen');
+    loadingScreen = document.getElementById('loading-screen');
     loadingScreen.classList.add('fade-out');
 
     // optional: remove loader from DOM via event listener
@@ -120,6 +120,13 @@ function App() {
     <>
       <div>
         <>
+          {!loadingScreen && (
+            <i id='scroll' className='text-center'>
+              <p>
+                - <small> scroll down </small>-
+              </p>
+            </i>
+          )}
           <Moon
             scene={scene}
             THREE={THREE}
@@ -156,6 +163,7 @@ function App() {
             )}
           </Row>
         </Container>
+
         <Content camera={camera} showContent={showContent} />
       </div>
     </>

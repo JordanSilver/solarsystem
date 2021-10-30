@@ -24,7 +24,7 @@ const Content = ({ camera, showContent }) => {
   function moveCamera() {
     const t = document.body.getBoundingClientRect().top;
     theta += dTheta;
-    camera.position.z = t + r * Math.sin(theta) + 60;
+    camera.position.z = t + r * Math.sin(theta) + 120;
     camera.position.y = (t / r) * Math.cos(theta) + 20;
     camera.position.x = (t / r) * Math.cos(theta) - 20;
     // camera.position.z = t * -0.01;
@@ -38,13 +38,6 @@ const Content = ({ camera, showContent }) => {
       className='content fade-in'
       style={{ zIndex: !showContent ? '-99' : '99' }}
     >
-      <i>
-        {' '}
-        <p className='text-center text-secondary'>
-          {' '}
-          - <small> scroll down </small>-
-        </p>
-      </i>
       <h4
         className='ml-2 mt-5'
         style={{ height: '10vh', width: '100%', color: 'white' }}

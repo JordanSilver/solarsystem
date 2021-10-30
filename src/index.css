@@ -35,6 +35,7 @@ canvas {
 
 .fade-in {
   opacity: 1;
+  transition: opacity 5s ease-in-out;
 }
 
 a {
