@@ -28,7 +28,13 @@ canvas {
   width: 100%;
   top: 0;
   margin: 0px auto;
+  opacity: 1;
   z-index: 99;
+  transition: opacity 5s ease-in-out;
+}
+
+.fade-in {
+  opacity: 1;
 }
 
 a {
@@ -129,7 +135,7 @@ section {
   margin: -75px 0 0 -75px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #9370db;
+  border-top-color: #ffffff;
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   overflow: hidden;
@@ -143,7 +149,7 @@ section {
   bottom: 5px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #ba55d3;
+  border-top-color: #66ff33;
   -webkit-animation: spin 3s linear infinite;
   animation: spin 3s linear infinite;
 }
@@ -156,7 +162,7 @@ section {
   bottom: 15px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #ff00ff;
+  border-top-color: #0066ff;
   -webkit-animation: spin 1.5s linear infinite;
   animation: spin 1.5s linear infinite;
 }

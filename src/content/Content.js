@@ -34,7 +34,10 @@ const Content = ({ camera, showContent }) => {
   document.body.onscroll = moveCamera;
 
   return (
-    <div className='content' style={{ zIndex: !showContent ? '-99' : '99' }}>
+    <div
+      className='content fade-in'
+      style={{ zIndex: !showContent ? '-99' : '99' }}
+    >
       <i>
         {' '}
         <p className='text-center text-secondary'>
