@@ -29,7 +29,6 @@ const Moon = ({ scene, THREE, renderer, camera }) => {
   moon.rotation.x = Math.PI * 2;
 
   scene.add(moon);
-
   var animate = function () {
     requestAnimationFrame(animate);
     if (moon !== undefined) {

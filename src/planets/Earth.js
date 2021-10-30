@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Earth = ({ scene, THREE, renderer, camera }) => {
+const Earth = ({ scene, THREE, renderer, camera, loadingManager }) => {
   // EARTH
 
   const earthgeometry = new THREE.SphereBufferGeometry(250, 50, 50);
-  const earthtexture = new THREE.TextureLoader().load(
+  const earthtexture = new THREE.TextureLoader(loadingManager).load(
     '/assets/textures/worldmap.jpg'
   );
 
