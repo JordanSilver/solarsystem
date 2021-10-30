@@ -10,7 +10,7 @@ import Sun from './planets/Sun';
 import Content from './content/Content';
 import { Container, Row } from 'react-bootstrap';
 
-let scene, camera, renderer, controls;
+let scene, camera, renderer, controls, skyBox;
 
 function App() {
   const [showContent, setShowContent] = useState(true);
@@ -23,7 +23,7 @@ function App() {
       100,
       window.innerWidth / window.innerHeight,
       0.1,
-      1000
+      2000
     );
     // Background Color
     //scene.background = new THREE.Color(0xffffff);
@@ -71,17 +71,19 @@ function App() {
     for (let i = 0; i < 6; i++) {
       skyBoxArray[i].side = THREE.BackSide;
     }
-    let skyBoxGeometry = new THREE.BoxGeometry(1000, 1000, 1000);
-    let skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxArray);
+    let skyBoxGeometry = new THREE.BoxGeometry(1500, 1500, 1500);
+    skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxArray);
+
     scene.add(skyBox);
   };
 
   // ANIMATION LOOP
   var animate = function () {
-    controls.update();
-
     requestAnimationFrame(animate);
-
+    controls.update();
+    if (skyBox !== undefined) {
+      skyBox.rotation.y += 0.0001;
+    }
     renderer.render(scene, camera);
   };
 
@@ -119,17 +121,16 @@ function App() {
       </div>
       <Container>
         <Row>
-          {/* <div
-            style={{ zIndex: '999', position: 'fixed', right: '0' }}
-            className='btn btn-secondary btn-sm m-2'
-            onClick={handleExplore}
-          >
-            {' '}
-            <span role='img'>
+          {window.innerWidth > 768 && (
+            <div
+              style={{ zIndex: '999', position: 'fixed', right: '0' }}
+              className='btn btn-secondary btn-sm m-2'
+              onClick={handleExplore}
+            >
               {' '}
-              {showContent ? '🔭' : <a href='www.silverstack.tech'>🌕</a>}
-            </span>{' '}
-          </div> */}
+              <span role='img'> {showContent ? '🔭' : '🌕'}</span>{' '}
+            </div>
+          )}
         </Row>
       </Container>
       <Content camera={camera} showContent={showContent} />
