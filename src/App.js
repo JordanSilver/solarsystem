@@ -34,7 +34,7 @@ function App() {
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
     renderer.setClearColor(scene.fog.color);
-    renderer.setPixelRatio(window.devicePixelRatio);
+
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     document.body.appendChild(renderer.domElement);
