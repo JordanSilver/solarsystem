@@ -173,9 +173,13 @@ const Content = ({ camera, showContent }) => {
               <Accordion.Item eventKey='1'>
                 <Accordion.Header>
                   <h4 className='pt-2'>
-                    <span role='img' aria-label='laptop'>
-                      💻
-                    </span>{' '}
+                    {mobile ? (
+                      <span role='img' aria-label='laptop'>
+                        💻
+                      </span>
+                    ) : (
+                      ''
+                    )}
                     Contact Info
                   </h4>
                 </Accordion.Header>

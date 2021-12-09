@@ -30,13 +30,21 @@ function App() {
     //scene.background = new THREE.Color(0xffffff);
     scene.fog = new THREE.FogExp2(0x000000, 0.001);
     // Renderer
-    renderer = new THREE.WebGLRenderer({ antialias: true });
+    let pixelRatio = window.devicePixelRatio;
+    let AA = true;
+    if (pixelRatio > 1) {
+      AA = false;
+    }
+    renderer = new THREE.WebGLRenderer({
+      antialias: AA,
+      powerPreference: 'high-performance',
+    });
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap; // default THREE.PCFShadowMap
     renderer.setClearColor(scene.fog.color);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    console.log(renderer.info.render);
+
     document.body.appendChild(renderer.domElement);
     // CONTROLS
     controls = new OrbitControls(camera, renderer.domElement);
