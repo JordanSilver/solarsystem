@@ -36,7 +36,7 @@ function App() {
     renderer.setClearColor(scene.fog.color);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
-
+    console.log(renderer.info.render);
     document.body.appendChild(renderer.domElement);
     // CONTROLS
     controls = new OrbitControls(camera, renderer.domElement);

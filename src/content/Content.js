@@ -14,6 +14,7 @@ import Portfolio from './Portfolio';
 import { Accordion, Col, Row } from 'react-bootstrap';
 
 const Content = ({ camera, showContent }) => {
+  const mobile = window.innerWidth < 768;
   // ROTATION
   var r = 50;
 
@@ -52,9 +53,17 @@ const Content = ({ camera, showContent }) => {
               Daniel <br /> Silver
             </h2>
             <div className='card text-center'>
-              <span style={{ fontSize: '2rem' }} role='img' aria-label='rocket'>
-                🚀
-              </span>{' '}
+              {mobile ? (
+                <span
+                  style={{ fontSize: '2rem' }}
+                  role='img'
+                  aria-label='rocket'
+                >
+                  🚀
+                </span>
+              ) : (
+                ''
+              )}
               <br />{' '}
               <p className='sub-title sub-title-ani'>
                 Web Developer | Designer | Entrepreneur
@@ -74,10 +83,14 @@ const Content = ({ camera, showContent }) => {
         </Col>
         <Col className='card mx-auto' xs={10} md={8}>
           <h2 className='pt-2' style={{ color: 'black' }}>
-            <span role='img' aria-label='trophy'>
-              {' '}
-              🏆
-            </span>{' '}
+            {mobile ? (
+              <span role='img' aria-label='trophy'>
+                {' '}
+                🏆
+              </span>
+            ) : (
+              ''
+            )}
             Featured
           </h2>
           <hr />
@@ -86,10 +99,13 @@ const Content = ({ camera, showContent }) => {
             <Accordion.Item eventKey='0'>
               <Accordion.Header>
                 <h4 className='pt-2'>
-                  {' '}
-                  <span role='img' aria-label='script'>
-                    📜
-                  </span>{' '}
+                  {mobile ? (
+                    <span role='img' aria-label='script'>
+                      📜
+                    </span>
+                  ) : (
+                    ''
+                  )}
                   Portfolio
                 </h4>
               </Accordion.Header>
@@ -106,9 +122,13 @@ const Content = ({ camera, showContent }) => {
               <Accordion.Item eventKey='0'>
                 <Accordion.Header>
                   <h4 className='pt-2'>
-                    <span role='img' aria-label='tech-guy'>
-                      👨‍💻
-                    </span>{' '}
+                    {mobile ? (
+                      <span role='img' aria-label='tech-guy'>
+                        👨‍💻
+                      </span>
+                    ) : (
+                      ''
+                    )}
                     About Me{' '}
                   </h4>
                 </Accordion.Header>

@@ -3,7 +3,7 @@ import React from 'react';
 const Earth = ({ scene, THREE, renderer, camera, loadingManager }) => {
   // EARTH
 
-  const earthgeometry = new THREE.SphereBufferGeometry(250, 50, 50);
+  const earthgeometry = new THREE.SphereBufferGeometry(250, 50, 40);
   const earthtexture = new THREE.TextureLoader(loadingManager).load(
     '/assets/textures/worldmap.jpg'
   );
@@ -18,7 +18,7 @@ const Earth = ({ scene, THREE, renderer, camera, loadingManager }) => {
   earth.castShadow = true;
   earth.receiveShadow = true;
 
-  const atmosgeometry = new THREE.SphereBufferGeometry(252, 50, 50);
+  const atmosgeometry = new THREE.SphereBufferGeometry(252, 50, 25);
   const earthclouds = new THREE.TextureLoader().load(
     '/assets/textures/cloudtext.jpg'
   );

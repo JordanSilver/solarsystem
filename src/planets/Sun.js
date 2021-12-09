@@ -2,7 +2,7 @@ import React from 'react';
 
 const Sun = ({ scene, THREE, renderer, camera }) => {
   // SUN
-  const sungeometry = new THREE.SphereBufferGeometry(5, 50, 50);
+  const sungeometry = new THREE.SphereBufferGeometry(5, 50, 10);
   const suntexture = new THREE.TextureLoader().load('/assets/textures/sun.png');
   const sunmaterial = new THREE.MeshStandardMaterial({
     map: suntexture,

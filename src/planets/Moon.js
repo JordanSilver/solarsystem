@@ -3,7 +3,7 @@ import React from 'react';
 const Moon = ({ scene, THREE, renderer, camera, loadingManager }) => {
   //   MOON
 
-  const geometry = new THREE.SphereBufferGeometry(4, 100, 100);
+  const geometry = new THREE.SphereBufferGeometry(4, 100, 30);
 
   const bumpmap = new THREE.TextureLoader(loadingManager).load(
     '/assets/textures/moonbump.jpg'
