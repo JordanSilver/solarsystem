@@ -156,7 +156,7 @@ function App() {
             camera={camera}
           />
         </>
-
+        {/* 
         <Container>
           <Row>
             {window.innerWidth > 768 && (
@@ -170,9 +170,9 @@ function App() {
               </div>
             )}
           </Row>
-        </Container>
+        </Container> */}
 
-        <Content camera={camera} showContent={showContent} />
+        {/* <Content camera={camera} showContent={showContent} /> */}
       </div>
     </>
   );
